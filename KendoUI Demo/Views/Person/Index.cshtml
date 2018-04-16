@@ -1,0 +1,151 @@
+﻿
+@(Html.Kendo().Grid<KendoUI_Demo.Models.PersonVM>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+        columns.Bound(c => c.FirstName);
+        columns.Bound(c => c.LastName);
+        columns.Bound(c => c.Age);
+        columns.Bound(c => c.DateOfBirth);
+        columns.Bound(c => c.Address);
+        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar => {
+            toolbar.Create();
+            toolbar.Excel();
+            toolbar.Pdf();
+      })
+      .ColumnMenu()
+      .Editable(editable => editable.Mode(GridEditMode.InLine))
+      .Pageable()
+      .Navigatable()
+      .Selectable(selectable => {
+            selectable.Mode(GridSelectionMode.Single);
+            selectable.Type(GridSelectionType.Row);
+      })
+      .Sortable(sortable => {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable()
+      .Events(events => {
+            events.PdfExport("onPdfExport");
+            events.ExcelExport("onExcelExport");
+            events.Save("onSave");
+            events.SaveChanges("onSaveChanges");
+            events.DataBinding("onDataBinding");
+            events.ColumnLock("onColumnLock");
+            events.Cancel("onCancel");
+            events.Change("onChange");
+            events.ColumnHide("onColumnHide");
+            events.ColumnReorder("onColumnReorder");
+            events.ColumnMenuInit("onColumnMenuInit");
+            events.ColumnShow("onColumnShow");
+            events.ColumnResize("onColumnResize");
+            events.ColumnUnlock("onColumnUnlock");
+            events.DetailCollapse("onDetailCollapse");
+            events.DataBound("onDataBound");
+            events.DetailInit("onDetailInit");
+            events.Edit("onEdit");
+            events.FilterMenuInit("onFilterMenuInit");
+            events.DetailExpand("onDetailExpand");
+            events.Remove("onRemove");
+      })
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.ID))
+          .Read(read => read.Action("Persons_Read", "Person"))
+          .Create(create => create.Action("Persons_Create", "Person"))
+          .Update(update => update.Action("Persons_Update", "Person"))
+          .Destroy(destroy => destroy.Action("Persons_Destroy", "Person"))
+      )
+)
+
+<script>
+
+    function onPdfExport(e){
+        //Implement the event handler for PdfExport
+    }
+
+    function onExcelExport(e){
+        //Implement the event handler for ExcelExport
+    }
+
+    function onSave(e){
+        //Implement the event handler for Save
+    }
+
+    function onSaveChanges(e){
+        //Implement the event handler for SaveChanges
+    }
+
+    function onDataBinding(e){
+        //Implement the event handler for DataBinding
+    }
+
+    function onColumnLock(e){
+        //Implement the event handler for ColumnLock
+    }
+
+    function onCancel(e){
+        //Implement the event handler for Cancel
+    }
+
+    function onChange(e){
+        //Implement the event handler for Change
+    }
+
+    function onColumnHide(e){
+        //Implement the event handler for ColumnHide
+    }
+
+    function onColumnReorder(e){
+        //Implement the event handler for ColumnReorder
+    }
+
+    function onColumnMenuInit(e){
+        //Implement the event handler for ColumnMenuInit
+    }
+
+    function onColumnShow(e){
+        //Implement the event handler for ColumnShow
+    }
+
+    function onColumnResize(e){
+        //Implement the event handler for ColumnResize
+    }
+
+    function onColumnUnlock(e){
+        //Implement the event handler for ColumnUnlock
+    }
+
+    function onDetailCollapse(e){
+        //Implement the event handler for DetailCollapse
+    }
+
+    function onDataBound(e){
+        //Implement the event handler for DataBound
+    }
+
+    function onDetailInit(e){
+        //Implement the event handler for DetailInit
+    }
+
+    function onEdit(e){
+        //Implement the event handler for Edit
+        alert("there");
+    }
+
+    function onFilterMenuInit(e){
+        //Implement the event handler for FilterMenuInit
+    }
+
+    function onDetailExpand(e){
+        //Implement the event handler for DetailExpand
+    }
+
+    function onRemove(e){
+        //Implement the event handler for Remove
+    }
+
+</script>
